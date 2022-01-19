@@ -1,0 +1,18 @@
+[
+    [
+        {
+            "id": 2,
+            "idName": "emotion",
+            "title": "ויסות רגשי",
+            "href": "https://shvillim.co.il/pages/emotion.html"
+        },
+        [
+            {
+                "name": "emotion",
+                "description": [
+                    "<i class='fas fa-check-circle mt-3'></i> ויסות רגשי<br/><i class='fas fa-check-circle mt-3'></i> התפרצויות זעם<br/><i class='fas fa-check-circle mt-3'></i> ניהול כעסים<br/><i class='fas fa-check-circle mt-3'></i> התמודדות במצבי לחץ<br/><i class='fas fa-check-circle mt-3'></i> בעיות מצב רוח<br/><i class='fas fa-check-circle mt-3'></i> משברי חיים"
+                ]
+            }
+        ]
+    ]
+]

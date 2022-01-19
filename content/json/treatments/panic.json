@@ -1,0 +1,18 @@
+[
+    [
+        {
+            "id": 1,
+            "idName": "panic",
+            "title": "הפרעות חרדה",
+            "href": "https://shvillim.co.il/pages/panic.html"
+        },
+        [
+            {
+                "name": "panic",
+                "description": [
+                    "<i class='fas fa-check-circle mt-3'></i> הפרעת פאניקה (Panic Disorder)<br/><i class='fas fa-check-circle mt-3'></i> פוביה פשוטה/ספציפית (Specific Phobia)<br/><i class='fas fa-check-circle mt-3'></i> הפרעת חרדה מוכללת (Generalized Anxiety Disorder - ובקיצור: GAD)<br/><i class='fas fa-check-circle mt-3'></i> חרדה חברתית (Social Anxiety Disorder)<br/><i class='fas fa-check-circle mt-3'></i> ODD - הפרעת התנגדות (Oppositional Defiant Disorder)<br/><i class='fas fa-check-circle mt-3'></i> OCD הפרעה אובססיבית כפייתית - הפרעה טורדנית כפייתית (Obsessive Compulsive Disorder - ובקיצור: OCD)<br/><i class='fas fa-check-circle mt-3'></i> PSTD - פוסט טראומה PosT Traumatic Stress Disorder"
+                ]
+            }
+        ]
+    ]
+]
