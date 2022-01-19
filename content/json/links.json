@@ -1,0 +1,22 @@
+{
+  "links": {
+    "home": "דף הבית",
+    "pages": {
+      "tonylaviad": "ד׳׳ר טוני לביאד",
+      "articles": {
+          "psychology": "פסיכולוגיה",
+          "education": "חינוך",
+          "intelligence": "אינטליגנתיה רגשית"
+      }, 
+      "treatments": {
+          "panic": "הפרעות חרדה",
+          "emotion": "ויסות חושי",
+          "children": "טיפול בילדים ונוער והדרכת הורים",
+          "adhd": "הפרעת קשב וריכוז",
+          "feedback": "טיפול בביופידבק"
+      },
+      "contact": "צור קשר"
+    }
+  }
+
+}
