@@ -1,22 +1,15 @@
 {
-  "links": {
-    "home": "דף הבית",
-    "pages": {
-      "tonylaviad": "ד׳׳ר טוני לביאד",
-      "articles": {
-          "psychology": "פסיכולוגיה",
-          "education": "חינוך",
-          "intelligence": "אינטליגנתיה רגשית"
-      }, 
-      "treatments": {
-          "panic": "הפרעות חרדה",
-          "emotion": "ויסות חושי",
-          "children": "טיפול בילדים ונוער והדרכת הורים",
-          "adhd": "הפרעת קשב וריכוז",
-          "feedback": "טיפול בביופידבק"
-      },
-      "contact": "צור קשר"
-    }
-  }
-
+  "home": "דף הבית",
+  "contact": "צור קשר",
+  "pages": [    
+    {"tonylaviad": ["ד׳׳ר טוני לביאד", "tonylaviad"]},      
+    {"psychology": ["פסיכולוגיה", "psychology"]},
+    {"education": ["חינוך", "education"]},
+    {"intelligence": ["אינטליגנציה רגשית", "intelligence"]},
+    {"panic": ["הפרעות חרדה", "panic"]},
+    {"emotion": ["ויסות חושי", "emotion"]},
+    {"children": ["טיפול בילדים ונוער והדרכת הורים", "children"]},
+    {"adhd": ["הפרעת קשב וריכוז", "adhd"]},
+    {"feedback": ["טיפול בביופידבק", "feedback"]}
+  ]
 }

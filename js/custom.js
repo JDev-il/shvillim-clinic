@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
   //?=============================================
           //** JSON Initial Call Paths **/          
   //?=============================================/
@@ -34,10 +35,9 @@ $(document).ready(function() {
     /* End of Outer Path
     -------------------------------------------------- */    
 
-  //?============  JSON Initial Call Paths  =============*/
 
 
-
+    
   //?=============================================
               //** JSON Functions **/          
   //?=============================================/
@@ -91,11 +91,9 @@ $(document).ready(function() {
 
   }
 
-//?============  JSON Functions  =============*/
 
 
-
-
+  
   //?=============================================
          //** Treatments/Home Carousel **/          
   //?=============================================/
@@ -185,13 +183,10 @@ $(document).ready(function() {
             if(err) return err
           })
       })
+
+
     
-  //?============  Treatments/Home Carousel  =============*/
-
-
-
-
-
+  
   //?=============================================
             //** Arrow Scroll Button **/          
   //?=============================================/
@@ -225,15 +220,14 @@ $(document).ready(function() {
     //   $(".btnScrollTop").css("line-height", "2.2rem", "important")
     // }
 
-  //?============  Arrow Scroll Button  =============*/
 
 
-
-
-
+    
   //?=============================================
        //** Navbar Toggler (Humburger Menu) **/          
   //?=============================================/
+
+    //TODO:: NEEDS TO BE FIXED
 
     $(".navbar-toggler").on('click', function(){
       // var jumboTronClass = ["jumboTronPsychology", "jumboTronEducation", "jumboTronIntelligence"]
@@ -249,12 +243,11 @@ $(document).ready(function() {
         // $(".navbar-toggler").css("margin-top", "24px", "!important")
         $(".navbar-toggler").css("color", "")
       }
-    }) 
-
-  //?============  Navbar Toggler (Humburger Menu)  =============*/
+    })
 
 
 
+    
   //?=============================================
       //** Pages & Navbar Initial Rendering **/          
   //?=============================================/
@@ -299,11 +292,9 @@ $(document).ready(function() {
       }   
     });
 
-//?============  Pages & Navbar Initial Rendering  =============*/
 
 
-  
-
+    
   //?=============================================
               //** Tony Laviad Page **/          
   //?=============================================/
@@ -313,38 +304,34 @@ $(document).ready(function() {
       pTag.setAttribute("id", i)    
     })
 
-          function galleryRender() {
-            if($(".desktopGallery")[0] == undefined || $(".desktopGallery")[0] == ''){
-            } else {
-            var gallery = $(".desktopGallery")[0].children
-            for (let index = 0; index < gallery.length; index++) {
-              if(gallery[index].childNodes[1] !== undefined){
-                let imageId = gallery[index].childNodes[1].id
-                $(`#${imageId}`).on("click", function(e){
-                  $(".modal-body").html(`<img src='${e.target.attributes.src.nodeValue}'/>`); 
-                })
-              }
-            }  
-            $(window).resize(function() {
-              var width = $(window).width();
-              if(width <= 768){
-                $("#imagePopUp").modal("hide")
-                setTimeout(() => {
-                  $('.modal-body img').remove()             
-                }, 400);
-              }
-            });
-            }
-          }
-          galleryRender()
-
- 
-  //?============  Tony Laviad Page  =============*/
+    function galleryRender() {
+      if($(".desktopGallery")[0] == undefined || $(".desktopGallery")[0] == ''){
+      } else {
+      var gallery = $(".desktopGallery")[0].children
+      for (let index = 0; index < gallery.length; index++) {
+        if(gallery[index].childNodes[1] !== undefined){
+          let imageId = gallery[index].childNodes[1].id
+          $(`#${imageId}`).on("click", function(e){
+            $(".modal-body").html(`<img src='${e.target.attributes.src.nodeValue}'/>`); 
+          })
+        }
+      }  
+      $(window).resize(function() {
+        var width = $(window).width();
+        if(width <= 768){
+          $("#imagePopUp").modal("hide")
+          setTimeout(() => {
+            $('.modal-body img').remove()             
+          }, 400);
+        }
+      });
+      }
+    }
+    galleryRender()
 
 
 
-
-
+    
   //?=============================================
         //** Window Scroll Navbar Effects **/          
   //?=============================================/
@@ -383,109 +370,115 @@ $(document).ready(function() {
       }
     });
 
-  //?============  Window Scroll Navbar Effects  =============*/
+
+
+    
+  //?===============================================
+            //** Link Active - Color/          
+  //?=============================================*/
+    
+    function linkActiveColoring(currentLink, chosenLink){
+    }
 
 
 
-
-
+    
   //?=============================================
                 //** Articles **/          
   //?=============================================/
 
-    //* Professional //
-
       const articlesPath = getJsonTopics()
-      if(articlesPath === "home"){
-        return articlesPath;
-      } 
-      $.getJSON(articlesPath[0], function(article) {
-        article.forEach(e => {
-          $(`#${articlesPath[1]}`).append(`
-          <div class="singleArticle" id="${articlesPath[2]}${e.art}">
-          <h3><u>${e.title}</u></h3>
-          <p>
-          ${e.intro}
-          </p>
-          <div class="collapse" id="collapse${articlesPath[1]===articlesPath[2] ? articlesPath[2] : articlesPath[3]}${e.art}">
-            <div class="mt-3">
-              <p>${e.body}</p>
+      if(articlesPath !== "home"){
+        $.getJSON(articlesPath[0], function(article) {
+          article.forEach((e, index) => {
+            $(`#${articlesPath[1]}`).append(`
+            <div class="singleArticle" id="${articlesPath[2]}${e.art}">
+            <h3>
+              <u>
+                ${e.title}
+              </u>
+            </h3>
+            <p>
+              ${e.intro}
+            </p>
+            <div class="collapse" id="collapse${articlesPath[3]}${e.art}">
+              <div class="mt-3">
+              <p>
+                ${e.body}
+              </p>
             </div>
-          </div>
-          <button
-            type="button"
-            class="btn waves-effect waves-light collapsed btn-md artBtn btnRadius"
-            data-toggle="collapse"
-            href="#collapse${articlesPath[3]}${e.art}"
-            aria-expanded="false"
-            aria-controls="collapse${e.art}"
-            id="${articlesPath[1]}Btn${e.art}"
-          >
-            להמשך קריאה
-          </button>
-        </div>`);
-
-          if (window.devicePixelRatio <= 2.200000047683716) {
-            $(`#${articlesPath[1]}Btn` + `${e.art}`)
-              .removeClass("btn-md")
-              .addClass("btn-lg");
-          }          
-
-          // if (window.devicePixelRatio > 2.200000047683716) {
-          //   $("#psyBtn" + `${e.art}`)
-          //     .removeClass("btn-md")
-          //     .addClass("btn-sm");
-          // }
-          
-          if(article.length <= 1){
-            $(`#collapse${articlesPath[2]}${e.art}`).removeClass("collapse")
-            $(`#${articlesPath[1]}Btn${e.art}`).remove();
-          }
-          $(`#${articlesPath[1]}Btn${e.art}`).click(function() {
-            if ($(`#${articlesPath[1]}Btn${e.art}:contains("להמשך קריאה")`)[0]) {
-              $(`#${articlesPath[1]}Btn${e.art}`)
-              .text("סגור")
-              .css("background", "rgb(255, 136, 132)")
-              .css("color", "rgb(255, 235, 205)")
-              .mouseup(function(){
-                $(this).blur();
-              });
-              $(`#${articlesPath[2]}${e.art}`)
-                .siblings()
-                .find("h3, p")
-                .css("color", "rgb(102, 122, 134, .15)");          
-                $(`#${articlesPath[2]}${e.art}`)
-                .siblings()
-                .find("button")
-                .attr("disabled", "disabled").css("background", "rgb(102, 122, 134, .15)").css("box-shadow", "none");
+            </div>
+            <button
+              type="button"
+              class="btn waves-effect waves-light collapsed btn-md artBtn btnRadius"
+              data-toggle="collapse"
+              href="#collapse${articlesPath[3]}${e.art}"
+              aria-expanded="false"
+              aria-controls="collapse${e.art}"
+              id="${articlesPath[1]}Btn${e.art}"
+            >
+              להמשך קריאה
+            </button>
+          </div>`);
+  
+            if (window.devicePixelRatio <= 2.200000047683716) {
+              $(`#${articlesPath[1]}Btn` + `${e.art}`)
+                .removeClass("btn-md")
+                .addClass("btn-lg");
+            }          
+  
+            // if (window.devicePixelRatio > 2.200000047683716) {
+            //   $("#psyBtn" + `${e.art}`)
+            //     .removeClass("btn-md")
+            //     .addClass("btn-sm");
+            // }
+            
+            if(article.length <= 1){
+              $(`#collapse${articlesPath[2]}${e.art}`).removeClass("collapse")
+              $(`#${articlesPath[1]}Btn${e.art}`).remove();
             } else {
-              if ($(`#${articlesPath[1]}Btn${e.art}:contains("סגור")`)[0]) {
-                $(`#${articlesPath[1]}Btn${e.art}`)
-                .text("להמשך קריאה")
-                .css("background", "").css("color", "");
-                $(`#${articlesPath[2]}${e.art}`)
-                  .siblings()
-                  .find("h3, p")
-                  .css("color", "rgb(54, 73, 84)");
-                $(`#${articlesPath[2]}${e.art}`)
-                  .siblings()
-                  .find("button")
-                  .removeAttr("disabled", "disabled")
-                  .css("background", "").css("box-shadow", "");
-              }
+              $(`#${articlesPath[1]}Btn${e.art}`).click(function() {
+                if ($(`#${articlesPath[1]}Btn${e.art}:contains("להמשך קריאה")`)[0]) {
+                  $(`#${articlesPath[1]}Btn${e.art}`)
+                  .text("סגור")
+                  .css("background", "rgb(255, 136, 132)")
+                  .css("color", "rgb(255, 235, 205)")
+                  .mouseup(function(){
+                    $(this).blur();
+                  });
+                  $(`#${articlesPath[2]}${e.art}`)
+                    .siblings()
+                    .find("h3, p")
+                    .css("color", "rgb(102, 122, 134, .15)");          
+                    $(`#${articlesPath[2]}${e.art}`)
+                    .siblings()
+                    .find("button")
+                    .attr("disabled", "disabled").css("background", "rgb(102, 122, 134, .15)").css("box-shadow", "none");
+                } else {
+                  if ($(`#${articlesPath[1]}Btn${e.art}:contains("סגור")`)[0]) {
+                    $(`#${articlesPath[1]}Btn${e.art}`)
+                    .text("להמשך קריאה")
+                    .css("background", "").css("color", "");
+                    $(`#${articlesPath[2]}${e.art}`)
+                      .siblings()
+                      .find("h3, p")
+                      .css("color", "rgb(54, 73, 84)");
+                    $(`#${articlesPath[2]}${e.art}`)
+                      .siblings()
+                      .find("button")
+                      .removeAttr("disabled", "disabled")
+                      .css("background", "").css("box-shadow", "");
+                  }
+                }
+              });            
             }
           });
         });
-      });
+      } 
 
 
 
-  //?============  Articles  =============*/
-
-
-
-
-
+    
   //?=============================================
               //** Direction Calls **/          
   //?=============================================/
@@ -521,11 +514,9 @@ $(document).ready(function() {
         })
       })
 
-  //?============  Direction Calls  =============*/
 
 
-
-
+    
   //?=============================================
               //** Footer Settings **/          
   //?=============================================/
@@ -537,12 +528,9 @@ $(document).ready(function() {
         $(".triggerFooter").css("display", "block")
     }, 100);
 
-  //?============  Footer Settings  =============*/
 
 
-
-
-
+    
   //?=============================================
         //** Contact / Confirm Page (PHP) **/          
   //?=============================================/  
@@ -601,11 +589,6 @@ $(document).ready(function() {
         $("#submitForm").attr("disabled", "disabled")
       }
     })
-      
-  //?============  Confirm Page (PHP)  =============*/
-
-
-
 
 
 });
