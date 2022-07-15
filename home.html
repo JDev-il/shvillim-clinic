@@ -45,15 +45,18 @@
     <!-- Slick Carousel JavaScript -->
     <script src="./carousel/slick/slick.js" type="text/javascript" charset="utf-8"></script>
     <!-- Custom JS -->
-    <script async type="text/javascript" src="js/custom/_header.js"></script>
-    <script async type="text/javascript" src="js/custom.js"></script>
+    <script async type="text/javascript" src="js/components/_header.js"></script>
+    <script async type="text/javascript" src="js/components/_footer.js"></script>
+    <script async type="text/javascript" src="js/custom.js"></script>    
 
     <title>ד״ר טוני לביאד || דף הבית</title>
 
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark px-1 navJs-0"><!--JS INCLUDED--></nav>
+    <nav class="navbar navbar-expand-md navbar-dark px-1 genericNav" id="navJs-1">
+      <!-- From _header.js-->
+    </nav>
   
     <!--=====================================
     =             Home Page Contnet         =
@@ -139,57 +142,7 @@
 
 
     <footer class="triggerFooter">
-      <div class="container text-center text-md-right">
-        <div class="row rowFooter">
-          <div class="col-md-3 mx-auto">
-            <ul class="">
-              <li class="">
-                <a class="" href="home.html">
-                  דף הבית
-                </a>
-              </li>
-            </ul>
-            <ul>
-              <li class="tonyLi">
-                <a class="" href="./pages/tonylaviad.html">
-                  ד"ר טוני לביאד
-                </a>
-              </li>
-            </ul>
-            <ul class="">
-              <li class="">
-                <a class="" href="./pages/privacy.html">
-                   פרטיות
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-3 mx-auto">
-            <ul class="">
-              <li class="">
-                <a class="" href="./pages/terms.html">
-                  תנאי שימוש
-                </a>
-              </li>
-            </ul>
-            <ul class="">
-              <li class="">
-                <a class="" href="./pages/contact.html">
-                    צור קשר
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="justify-content-center tonyRights">
-          <p>
-            © כל הזכויות שמורות לד"ר טוני לביאד | מכון "שבילים"
-          </p>
-          <span>עיצוב ופיתוח: WeWebs</span>
-          <br/>
-          <img class="sslBadge" title="RapidSSl Certificated" src="./content/media/RapidSSL_SEAL-90x50.gif"/>
-        </div>
-      </div>
     </footer>    
+
   </body>
 </html>
