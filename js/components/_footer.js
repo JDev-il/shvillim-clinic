@@ -1,4 +1,4 @@
-var changedPath = !location.pathname.includes("index.html") || !location.pathname.includes("contact.html") ? '../pages/' : './'
+var changedPath = !location.pathname.includes("index.html") || !location.pathname.includes("contact.html") ? '../pages/' : '/'
 
 document.getElementsByClassName('triggerFooter')[0].innerHTML = `<div class="container text-center text-md-right">
   <div class="row rowFooter">
@@ -48,6 +48,6 @@ document.getElementsByClassName('triggerFooter')[0].innerHTML = `<div class="con
     </p>
     <span>עיצוב ופיתוח: WeWebs</span>
     <br/>
-  <img class="sslBadge" title="RapidSSl Certificated" src="content/media/RapidSSL_SEAL-90x50.gif"/>
+  <img class="sslBadge" title="RapidSSl Certificated" src='/content/media/RapidSSL_SEAL-90x50.png'/>
   </div>
   </div>`;

@@ -141,8 +141,10 @@ body {
         .dropdown-menu{
             text-align: center;
             width: 200px;
+            padding: 2px;
             border-radius: .25rem !important;
-            background: rgba(43, 43, 43, 0.900)
+            background: rgba(43, 43, 43, 0.900);
+            backdrop-filter: blur(.4rem) !important;
         }
         @keyframes hoverMenuOff {
             0% {opacity: 1;}
@@ -241,6 +243,7 @@ body {
                 transition: all .3s !important;
                 background-color: rgba(255, 235, 205, 0.899) !important;
                 box-shadow: 0 0 12px 2px rgba(54, 73, 84, 0.235) !important;
+                backdrop-filter: blur(.4rem);
             }
             .fixed .nav-link {
                 color: rgb(54, 73, 84) !important;
