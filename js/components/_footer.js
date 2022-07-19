@@ -1,11 +1,11 @@
-var changedPath = !location.pathname.includes("home.html") || !location.pathname.includes("contact.html") ? '../pages/' : './'
+var changedPath = !location.pathname.includes("index.html") || !location.pathname.includes("contact.html") ? '../pages/' : './'
 
 document.getElementsByClassName('triggerFooter')[0].innerHTML = `<div class="container text-center text-md-right">
   <div class="row rowFooter">
     <div class="col-md-3 mx-auto">
       <ul class="">
         <li class="">
-          <a class="" href="/home.html">
+          <a class="" href="/index.html">
             דף הבית
           </a>
         </li>

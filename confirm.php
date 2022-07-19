@@ -99,7 +99,7 @@
       </p>
     </div>
     <div class="text-center">
-      <a href="./home.html" type="button" class="btn waves-effect waves-light btn-md mt-3" id="confirmButton">לחזרה לדף הבית</a>
+      <a href="./index.html" type="button" class="btn waves-effect waves-light btn-md mt-3" id="confirmButton">לחזרה לדף הבית</a>
     </div>
   </body>
 </html>

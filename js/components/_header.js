@@ -42,7 +42,7 @@ $(document).ready(function(){
           `<div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item" id="li1">
-                <a class="nav-link" href="/home.html">דף הבית</a>
+                <a class="nav-link" href="/index.html">דף הבית</a>
               </li>
               <li class="nav-item" id="li2">
                 <a class="nav-link" href="../pages/tonylaviad.html">אודות</a>
@@ -105,7 +105,7 @@ $(document).ready(function(){
 
       switch (currentPathName) {
         
-        case "home" || "index":
+        case "home" && "index":
           $('#li1')
           .addClass("active");
           return;

@@ -1,9 +1,9 @@
   <nav class="navbar navbar-expand-md navbar-dark px-1" id="navHome">
-    <a class="navbar-brand" href="./home.html">ד״ר טוני לביאד</a>
+    <a class="navbar-brand" href="./index.html">ד״ר טוני לביאד</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active" id="1">
-          <a class="nav-link" href="./home.html">דף הבית</a>
+          <a class="nav-link" href="./index.html">דף הבית</a>
         </li>
         <li class="nav-item" id="2">
           <a class="nav-link" href="./pages/tonylaviad.html">מי אני?</a>
