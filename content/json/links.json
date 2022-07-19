@@ -1,7 +1,6 @@
 {
-  "home": "דף הבית",
-  "contact": "צור קשר",
   "pages": [    
+    {"home": ["דף הבית", "home"]},
     {"tonylaviad": ["ד׳׳ר טוני לביאד", "tonylaviad"]},      
     {"psychology": ["פסיכולוגיה", "psychology"]},
     {"education": ["חינוך", "education"]},
@@ -10,6 +9,7 @@
     {"emotion": ["ויסות חושי", "emotion"]},
     {"children": ["טיפול בילדים ונוער והדרכת הורים", "children"]},
     {"adhd": ["הפרעת קשב וריכוז", "adhd"]},
-    {"feedback": ["טיפול בביופידבק", "feedback"]}
+    {"feedback": ["טיפול בביופידבק", "feedback"]},
+    {"contact": ["צור קשר", "contact"]}
   ]
 }

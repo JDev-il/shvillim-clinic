@@ -103,7 +103,7 @@ body {
 
         .navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link, 
         .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link {
-            color: rgb(255, 136, 132) !important;
+            color: rgb(255, 136, 132);
         }
 
 
@@ -168,19 +168,26 @@ body {
             color: white !important;
             font-weight: 400 !important;
         }
+        
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: rgb(255, 235, 205) !important;
+            color: rgb(255, 136, 132) !important;
+        }
+
         .dropdown-item:hover {
             -webkit-transition: all .4s;
             transition: .4s !important;
             color: rgb(255, 136, 132) !important;
             background: rgb(255, 235, 205) ;
         }
-    
+
         .dropdown .nav-link { /**? Articles, Treatments */
             color: white !important;
         }
         .dropdown .active {
             color: rgb(255, 136, 132) !important;
         }
+
 
         /** Specific Media Queries For Navbar **/        
             @media only screen and (min-width: 0px) 

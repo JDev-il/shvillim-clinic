@@ -5,7 +5,13 @@ $(document).ready(function() {
           //** JSON Initial Call Paths **/          
   //?=============================================/
 
-    var path = "https://shvillim.co.il/content"
+    var path = location.pathname.includes('home') || location.pathname.includes('contact') ? "./content" : '../../content';    
+
+    var pathName = location.pathname,
+    currentPathName = pathName.includes("/pages") ? 
+    pathName.split("/pages/")[1].split(".")[0] : 
+    pathName.split("/")[pathName.split("/").length-1].split(".")[0];
+
 
     /* Outer Path
     -------------------------------------------------- */
@@ -43,14 +49,6 @@ $(document).ready(function() {
   //?=============================================/
 
   var getJsonTopics = function(){
-
-    let 
-    pathName = location.pathname,
-    name = 
-      pathName.includes("/pages") ? 
-      pathName.split("/pages/")[1].split(".")[0] : 
-      pathName.split("/")[pathName.split("/").length-1].split(".")[0];
-      
     const 
     inteli = "inteli",
     psy = "psy",
@@ -62,31 +60,31 @@ $(document).ready(function() {
     feedback = "feedback"; 
 
     if(pathName.includes("/intelligence.html")){
-      return [intelligence, name, inteli, inteli.charAt(0).toUpperCase() + inteli.slice(1)]
+      return [intelligence, currentPathName, inteli, inteli.charAt(0).toUpperCase() + inteli.slice(1)]
     }
     else if(pathName.includes("/psychology.html")){
-      return [psychology, name, psy, psy.charAt(0).toUpperCase() + psy.slice(1)]
+      return [psychology, currentPathName, psy, psy.charAt(0).toUpperCase() + psy.slice(1)]
     }
     else if(pathName.includes("/education.html")){
-      return [education, name, edu, edu.charAt(0).toUpperCase() + edu.slice(1)];
+      return [education, currentPathName, edu, edu.charAt(0).toUpperCase() + edu.slice(1)];
     }
     else if(pathName.includes("/panic.html")){
-      return [panicarticle, name, panic, panic.charAt(0).toUpperCase() + panic.slice(1)];
+      return [panicarticle, currentPathName, panic, panic.charAt(0).toUpperCase() + panic.slice(1)];
     }
     else if(pathName.includes("/emotion.html")){
-      return [emotionarticle, name, emotion, emotion.charAt(0).toUpperCase() + emotion.slice(1)];
+      return [emotionarticle, currentPathName, emotion, emotion.charAt(0).toUpperCase() + emotion.slice(1)];
     }
     else if(pathName.includes("/children.html")){
-      return [childrenarticle, name, child, child.charAt(0).toUpperCase() + child.slice(1)];
+      return [childrenarticle, currentPathName, child, child.charAt(0).toUpperCase() + child.slice(1)];
     }
     else if(pathName.includes("/adhd.html")){
-      return [adhdarticle, name, adhd, adhd.charAt(0).toUpperCase() + adhd.slice(1)];
+      return [adhdarticle, currentPathName, adhd, adhd.charAt(0).toUpperCase() + adhd.slice(1)];
     }
     else if(pathName.includes("/feedback.html")){
-      return [feedbackarticle, name, feedback, feedback.charAt(0).toUpperCase() + feedback.slice(1)];
+      return [feedbackarticle, currentPathName, feedback, feedback.charAt(0).toUpperCase() + feedback.slice(1)];
     }
     else {
-      return name
+      return currentPathName
     }
 
   }
@@ -249,7 +247,7 @@ $(document).ready(function() {
 
     
   //?=============================================
-      //** Pages & Navbar Initial Rendering **/          
+      //** Main Page/s Initial Rendering **/          
   //?=============================================/
 
   var pagesNames = [
@@ -269,30 +267,6 @@ $(document).ready(function() {
         });
       }, 100);        
     }
-
-
-  //* Pages Navbar & ".active" Class Settings //
-
-    for (let i = 1; i <=pagesNames.length + 1; i++) {
-      if ($(`#${i}`).hasClass("active")) {
-        $(`#${i}`).css("box-shadow", "0 2px 5px 0 rgba(0,0,0,.16)", "0 2px 10px 0 rgba(0,0,0,.12)");  
-        $(`.navBarCustom #${i}`).css("color", "rgb(54, 73, 84)", "!important");
-        $(`.navBarCustom #${i}`).css("background-color","rgba(255, 235, 205)", "!important");
-      }
-    }
-
-    if($("#dropdownCat").hasClass("active")) {
-      $("#dropdownCat").css("box-shadow", "0 2px 5px 0 rgba(0,0,0,.16)", "0 2px 10px 0 rgba(0,0,0,.12)");
-    }
-    
-    $(".dropdown-menu").children('a').each(function(a, tag){
-      if(tag.getAttribute("href") == null){
-        tag.setAttribute("disabled", "disabled")
-        $(tag).css("background", "transparent")
-      }   
-    });
-
-
 
     
   //?=============================================
@@ -371,24 +345,13 @@ $(document).ready(function() {
     });
 
 
-
-    
-  //?===============================================
-            //** Link Active - Color/          
-  //?=============================================*/
-    
-    function linkActiveColoring(currentLink, chosenLink){
-    }
-
-
-
     
   //?=============================================
                 //** Articles **/          
   //?=============================================/
-
+    
       const articlesPath = getJsonTopics()
-      if(articlesPath !== "home"){
+      if(articlesPath !== "home" || articlesPath !== "index"){
         $.getJSON(articlesPath[0], function(article) {
           article.forEach((e, index) => {
             $(`#${articlesPath[1]}`).append(`
@@ -427,14 +390,9 @@ $(document).ready(function() {
                 .addClass("btn-lg");
             }          
   
-            // if (window.devicePixelRatio > 2.200000047683716) {
-            //   $("#psyBtn" + `${e.art}`)
-            //     .removeClass("btn-md")
-            //     .addClass("btn-sm");
-            // }
-            
+            // Responsible for the chosen article's color / siblings' decoloring.
             if(article.length <= 1){
-              $(`#collapse${articlesPath[2]}${e.art}`).removeClass("collapse")
+              $(`#collapse${articlesPath[3]}${e.art}`).removeClass("collapse")
               $(`#${articlesPath[1]}Btn${e.art}`).remove();
             } else {
               $(`#${articlesPath[1]}Btn${e.art}`).click(function() {
@@ -484,36 +442,36 @@ $(document).ready(function() {
   //?=============================================/
   
     //* Initial First Append //
-
-      $.getJSON(calls, function(call, i){
-        var firstRandom = call.splice(Math.floor(Math.random() * (10)), 1)[0];  
-        $("#directionCallCarousel").append(`
-        <div class="carousel-item active directionText">
-          <p class="text-center">
-            <em>"${firstRandom.body}"</em>
-          </p>
-        </div>
-        `)
-      })
-
-
-    //* Dynamic Append //
-
-      $.getJSON(calls, function(call){
-        var newArr = []  
-        call.forEach((e, i)=>{
-          var random = call.splice(Math.floor(Math.random() * (10)), 1)[0];
-          newArr.push(random)          
+      if(currentPathName == 'home' || currentPathName == 'index'){
+        $.getJSON(calls, function(call, i){
+          var firstRandom = call.splice(Math.floor(Math.random() * (10)), 1)[0];  
           $("#directionCallCarousel").append(`
-          <div class="carousel-item directionText">
-          <p class="text-center">
-            <em>"${newArr[i].body}"</em>
-          </p>
-        </div>
+          <div class="carousel-item active directionText">
+            <p class="text-center">
+              <em>"${firstRandom.body}"</em>
+            </p>
+          </div>
           `)
         })
-      })
-
+  
+  
+      //* Dynamic Append //
+  
+        $.getJSON(calls, function(call){
+          var newArr = []  
+          call.forEach((e, i)=>{
+            var random = call.splice(Math.floor(Math.random() * (10)), 1)[0];
+            newArr.push(random)          
+            $("#directionCallCarousel").append(`
+            <div class="carousel-item directionText">
+            <p class="text-center">
+              <em>"${newArr[i].body}"</em>
+            </p>
+          </div>
+            `)
+          })
+        });        
+      }
 
 
     
@@ -525,8 +483,7 @@ $(document).ready(function() {
     
     setTimeout(() => {
         $(".triggerFooter").css("display", "block")
-        $(".triggerFooter").css("display", "block")
-    }, 100);
+    }, 200);
 
 
 
@@ -589,6 +546,5 @@ $(document).ready(function() {
         $("#submitForm").attr("disabled", "disabled")
       }
     })
-
 
 });
