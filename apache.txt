@@ -1,0 +1,19 @@
+Options -MultiViews
+<IfModule mod_rewrite.c>
+RewriteEngine ON
+RewriteBase /
+    ###Rules for handling .html to without html uri in browser.
+    RewriteCond %{REQUEST_URI} \s/([^.]*)\.html\s [NC]
+    RewriteRule ^ /%1? [R=301,L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{DOCUMENT_ROOT}/$1\.html -f [NC]
+    RewriteRule ^(.*)/?$ $1.html [L]
+
+    ##Rule from OP's already existing .htaccess file.
+    RewriteRule ^index\.html$ - [L,NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule . /index.html [L]
+</IfModule>
