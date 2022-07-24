@@ -1,11 +1,16 @@
 $(document).ready(function() {
-
+    
+  
+  //TODO:: //! Uncomment the below line when in production!!
+  // location.pathname === "/" ? location.href = "/index" : ''; 
 
   //?=============================================
           //** JSON Initial Call Paths **/          
   //?=============================================/
 
-    var path = location.pathname.includes('home') || location.pathname.includes('contact') ? "./content" : '../../content';    
+    
+    var path = location.pathname.includes('home') || location.pathname.includes('contact') || location.pathname.includes('index') ? "./content" : '../../content';    
+
 
     var pathName = location.pathname,
     currentPathName = pathName.includes("/pages") ? 
@@ -91,7 +96,6 @@ $(document).ready(function() {
 
 
 
-  
   //?=============================================
          //** Treatments/Home Carousel **/          
   //?=============================================/
@@ -182,7 +186,6 @@ $(document).ready(function() {
           })
       })
 
-
     
   
   //?=============================================
@@ -219,7 +222,6 @@ $(document).ready(function() {
     // }
 
 
-
     
   //?=============================================
        //** Navbar Toggler (Humburger Menu) **/          
@@ -244,19 +246,18 @@ $(document).ready(function() {
     })
 
 
-
     
   //?=============================================
       //** Main Page/s Initial Rendering **/          
   //?=============================================/
 
-  var pagesNames = [
-    "intelligence", "psychology", 
-    "education", "tonyPage", 
-    "panic", "emotion", 
-    "children", "adhd", 
-    "feedback"
-  ]
+    var pagesNames = [
+      "intelligence", "psychology", 
+      "education", "tonyPage", 
+      "panic", "emotion", 
+      "children", "adhd", 
+      "feedback"
+    ]
 
   //* FadeIn Effect //
   
@@ -269,19 +270,22 @@ $(document).ready(function() {
     }
 
     
+
   //?=============================================
               //** Tony Laviad Page **/          
   //?=============================================/
+
 
     $("#tonyIconsSection p").each(function(i){
       var pTag = document.children[0].children[1].children[2].children[4].children[i]
       pTag.setAttribute("id", i)    
     })
 
-    function galleryRender() {
-      if($(".desktopGallery")[0] == undefined || $(".desktopGallery")[0] == ''){
-      } else {
-      var gallery = $(".desktopGallery")[0].children
+    async function galleryRender() {
+      if($(".desktopGallery")[0] === undefined || $(".desktopGallery")[0] === ''){
+          return;
+      }
+      var gallery = await $(".desktopGallery")[0].children
       for (let index = 0; index < gallery.length; index++) {
         if(gallery[index].childNodes[1] !== undefined){
           let imageId = gallery[index].childNodes[1].id
@@ -289,7 +293,8 @@ $(document).ready(function() {
             $(".modal-body").html(`<img src='${e.target.attributes.src.nodeValue}'/>`); 
           })
         }
-      }  
+      };
+
       $(window).resize(function() {
         var width = $(window).width();
         if(width <= 768){
@@ -299,10 +304,8 @@ $(document).ready(function() {
           }, 400);
         }
       });
-      }
     }
     galleryRender()
-
 
 
     
@@ -350,93 +353,92 @@ $(document).ready(function() {
                 //** Articles **/          
   //?=============================================/
     
-      const articlesPath = getJsonTopics()
-      if(articlesPath !== "home" || articlesPath !== "index"){
-        $.getJSON(articlesPath[0], function(article) {
-          article.forEach((e, index) => {
-            $(`#${articlesPath[1]}`).append(`
-            <div class="singleArticle" id="${articlesPath[2]}${e.art}">
-            <h3>
-              <u>
-                ${e.title}
-              </u>
-            </h3>
+    const articlesPath = getJsonTopics()
+    if(articlesPath !== "home" || articlesPath !== "index"){
+      $.getJSON(articlesPath[0], function(article) {
+        article.forEach((e, index) => {
+          $(`#${articlesPath[1]}`).append(`
+          <div class="singleArticle" id="${articlesPath[2]}${e.art}">
+          <h3>
+            <u>
+              ${e.title}
+            </u>
+          </h3>
+          <p>
+            ${e.intro}
+          </p>
+          <div class="collapse" id="collapse${articlesPath[3]}${e.art}">
+            <div class="mt-3">
             <p>
-              ${e.intro}
+              ${e.body}
             </p>
-            <div class="collapse" id="collapse${articlesPath[3]}${e.art}">
-              <div class="mt-3">
-              <p>
-                ${e.body}
-              </p>
-            </div>
-            </div>
-            <button
-              type="button"
-              class="btn waves-effect waves-light collapsed btn-md artBtn btnRadius"
-              data-toggle="collapse"
-              href="#collapse${articlesPath[3]}${e.art}"
-              aria-expanded="false"
-              aria-controls="collapse${e.art}"
-              id="${articlesPath[1]}Btn${e.art}"
-            >
-              להמשך קריאה
-            </button>
-          </div>`);
-  
-            if (window.devicePixelRatio <= 2.200000047683716) {
-              $(`#${articlesPath[1]}Btn` + `${e.art}`)
-                .removeClass("btn-md")
-                .addClass("btn-lg");
-            }          
-  
-            // Responsible for the chosen article's color / siblings' decoloring.
-            if(article.length <= 1){
-              $(`#collapse${articlesPath[3]}${e.art}`).removeClass("collapse")
-              $(`#${articlesPath[1]}Btn${e.art}`).remove();
-            } else {
-              $(`#${articlesPath[1]}Btn${e.art}`).click(function() {
-                if ($(`#${articlesPath[1]}Btn${e.art}:contains("להמשך קריאה")`)[0]) {
+          </div>
+          </div>
+          <button
+            type="button"
+            class="btn waves-effect waves-light collapsed btn-md artBtn btnRadius"
+            data-toggle="collapse"
+            href="#collapse${articlesPath[3]}${e.art}"
+            aria-expanded="false"
+            aria-controls="collapse${e.art}"
+            id="${articlesPath[1]}Btn${e.art}"
+          >
+            להמשך קריאה
+          </button>
+        </div>`);
+
+          if (window.devicePixelRatio <= 2.200000047683716) {
+            $(`#${articlesPath[1]}Btn` + `${e.art}`)
+              .removeClass("btn-md")
+              .addClass("btn-lg");
+          }          
+
+          // Responsible for the chosen article's color / siblings' decoloring.
+          if(article.length <= 1){
+            $(`#collapse${articlesPath[3]}${e.art}`).removeClass("collapse")
+            $(`#${articlesPath[1]}Btn${e.art}`).remove();
+          } else {
+            $(`#${articlesPath[1]}Btn${e.art}`).click(function() {
+              if ($(`#${articlesPath[1]}Btn${e.art}:contains("להמשך קריאה")`)[0]) {
+                $(`#${articlesPath[1]}Btn${e.art}`)
+                .text("סגור")
+                .css("background", "rgb(255, 136, 132)")
+                .css("color", "rgb(255, 235, 205)")
+                .mouseup(function(){
+                  $(this).blur();
+                });
+                $(`#${articlesPath[2]}${e.art}`)
+                  .siblings()
+                  .find("h3, p")
+                  .css("color", "rgb(102, 122, 134, .15)");          
+                  $(`#${articlesPath[2]}${e.art}`)
+                  .siblings()
+                  .find("button")
+                  .attr("disabled", "disabled").css("background", "rgb(102, 122, 134, .15)").css("box-shadow", "none");
+              } else {
+                if ($(`#${articlesPath[1]}Btn${e.art}:contains("סגור")`)[0]) {
                   $(`#${articlesPath[1]}Btn${e.art}`)
-                  .text("סגור")
-                  .css("background", "rgb(255, 136, 132)")
-                  .css("color", "rgb(255, 235, 205)")
-                  .mouseup(function(){
-                    $(this).blur();
-                  });
+                  .text("להמשך קריאה")
+                  .css("background", "").css("color", "");
                   $(`#${articlesPath[2]}${e.art}`)
                     .siblings()
                     .find("h3, p")
-                    .css("color", "rgb(102, 122, 134, .15)");          
-                    $(`#${articlesPath[2]}${e.art}`)
+                    .css("color", "rgb(54, 73, 84)");
+                  $(`#${articlesPath[2]}${e.art}`)
                     .siblings()
                     .find("button")
-                    .attr("disabled", "disabled").css("background", "rgb(102, 122, 134, .15)").css("box-shadow", "none");
-                } else {
-                  if ($(`#${articlesPath[1]}Btn${e.art}:contains("סגור")`)[0]) {
-                    $(`#${articlesPath[1]}Btn${e.art}`)
-                    .text("להמשך קריאה")
-                    .css("background", "").css("color", "");
-                    $(`#${articlesPath[2]}${e.art}`)
-                      .siblings()
-                      .find("h3, p")
-                      .css("color", "rgb(54, 73, 84)");
-                    $(`#${articlesPath[2]}${e.art}`)
-                      .siblings()
-                      .find("button")
-                      .removeAttr("disabled", "disabled")
-                      .css("background", "").css("box-shadow", "");
-                  }
+                    .removeAttr("disabled", "disabled")
+                    .css("background", "").css("box-shadow", "");
                 }
-              });            
-            }
-          });
+              }
+            });            
+          }
         });
-      } 
+      });
+    } 
 
 
-
-    
+  
   //?=============================================
               //** Direction Calls **/          
   //?=============================================/
@@ -472,18 +474,6 @@ $(document).ready(function() {
           })
         });        
       }
-
-
-    
-  //?=============================================
-              //** Footer Settings **/          
-  //?=============================================/
-
-    $(".triggerFooter").css("display", "none")
-    
-    setTimeout(() => {
-        $(".triggerFooter").css("display", "block")
-    }, 200);
 
 
 

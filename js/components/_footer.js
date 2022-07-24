@@ -1,5 +1,6 @@
 var changedPath = !location.pathname.includes("index.html") || !location.pathname.includes("contact.html") ? '../pages/' : '/'
 
+document.getElementsByClassName('triggerFooter')[0].style = "display: none";
 document.getElementsByClassName('triggerFooter')[0].innerHTML = `<div class="container text-center text-md-right">
   <div class="row rowFooter">
     <div class="col-md-3 mx-auto">
@@ -50,4 +51,10 @@ document.getElementsByClassName('triggerFooter')[0].innerHTML = `<div class="con
     <br/>
   <img class="sslBadge" title="RapidSSl Certificated" src='/content/media/RapidSSL_SEAL-90x50.png'/>
   </div>
-  </div>`;
+</div>`;
+
+setTimeout(() => {
+  if(document.getElementsByClassName('triggerFooter')[0].innerHTML.length){
+    document.getElementsByClassName('triggerFooter')[0].style = "display: block";
+  }
+}, 250);
